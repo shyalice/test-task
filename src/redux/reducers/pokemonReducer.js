@@ -9,16 +9,11 @@ export const initialState = {
 
 const pokemonReducer = (state = initialState, action) => {
     switch (action.type){
-        case actions.FETCH_POKEMONS_SUCCESS:
+        case actions.GET_POKEMON_SUCCESS:
             return {
                 ...state,
-                pokemons: action.pokemons,
+                pokemons: [action.pokemon, ...state.pokemons]
             };
-        // case actions.GET_POKEMON_SUCCESS:
-        //     return {
-        //         ...state,
-        //         pokemons: action.pokemon
-        //     };
     }
     return state;
 };

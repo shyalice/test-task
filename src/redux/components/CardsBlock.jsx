@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import {fetchPokemons} from "../actions/pokemonActions";
+import {fetchPokemons, getPokemon} from "../actions/pokemonActions";
 import PokemonCard from '../../components/PokemonCard';
 
 class CardsBlock extends Component{
@@ -16,23 +16,26 @@ class CardsBlock extends Component{
 
     render(){
         return(
-            <div>
-                {/* {this.props.pokemons.map((pokemon, index) => (
-                    <PokemonCard key={index} name={pokemon.name} info={pokemon.info}/>
-                ))} */}
+            <div className="container">
+                <div className="cards-block">
+                    {this.props.pokemons.map((pokemon, index) => (
+                        <PokemonCard key={index} name={pokemon.name} img={pokemon.sprites.front_default}/>
+                    ))}
+                </div>
             </div>
+            
         );
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        pokemons: state.pokemon.pokemons
+        pokemons: state.pokemon.pokemons.sort((a, b) => parseFloat(a.id) - parseFloat(b.id))
     };
 };
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators({fetchPokemons}, dispatch);
+    return bindActionCreators({fetchPokemons, getPokemon}, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardsBlock); 

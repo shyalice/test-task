@@ -7,7 +7,6 @@ export function fetchPokemons() {
         return axios.get("https://pokeapi.co/api/v2/pokemon")
             .then(response => {
                 dispatch(fetchPokemonsSuccess(
-                    // response.data.results,
                     response.data.results.map(pokemon => this.getPokemon(pokemon.name))
                 ));
             })
@@ -21,10 +20,9 @@ function fetchPokemonsRequest() {
         type: actions.FETCH_POKEMONS_REQUEST,
     }
 }
-export function fetchPokemonsSuccess(pokemons) {
+export function fetchPokemonsSuccess() {
     return {
         type: actions.FETCH_POKEMONS_SUCCESS,
-        pokemons
     }
 }
 function fetchPokemonsFailure(error) {
@@ -50,9 +48,10 @@ function getPokemonRequest() {
         type: actions.GET_POKEMON_REQUEST,
     }
 }
-export function getPokemonSuccess() {
+export function getPokemonSuccess(pokemon) {
     return {
         type: actions.GET_POKEMON_SUCCESS,
+        pokemon
     }
 }
 function getPokemonFailure(error) {
