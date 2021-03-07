@@ -18,22 +18,26 @@ body{
     flex-wrap: wrap;
     justify-content: space-around;
     .pokemon-card{
+        position: relative;
         cursor: pointer;
         padding: 15px;
         width: 20%;
         margin: 10px;
         height: 40%;
-        background: linear-gradient(90deg, rgba(132,158,184,1) 0%, rgba(199,218,237,1) 55%);
+        background: linear-gradient(90deg, #849eb8 0%, #c7daed 55%);
         transition: 0.2s;
         margin-bottom: 20px;
         border-radius: 10px;
         .pokemon-name{
             font-size: 20px;
             margin: 0;
+            margin-bottom: 10px;
             text-align: center;
-            color: #000;
+            color: #354d64;
         }
         .pokemon-img{
+            position: relative;
+            z-index: 2;
             padding: 20px 40px;
             display: flex;
             justify-content: center;
@@ -42,6 +46,16 @@ body{
                 width: 100px;
                 transition: 0.2s;
             }
+        }
+        .pokemon-id{
+            position: absolute;
+            z-index: 1;
+            color: #849eb8;
+            font-size: 60px;
+            font-weight: 900;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         &:hover{
             box-shadow: 26px 26px 17px 2px rgba(2, 8, 14, 0.315);

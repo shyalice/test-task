@@ -1,7 +1,8 @@
 import React from "react";
 
-const PokemonCard = ({name, img}) => (
+const PokemonCard = ({name, img, id}) => (
     <div className="pokemon-card">
+        <div className="pokemon-id">#{id}</div>
         <div className="pokemon-img">
             <img src={img} alt={name}/>
         </div>
