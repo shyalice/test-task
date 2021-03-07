@@ -11,9 +11,11 @@ class App extends Component{
     render(){
         return(
             <BrowserRouter>
-                <Header/>
-                <CardsBlock/>
-                <Footer/>
+                <div className="wrapper">
+                    <Header/>
+                    <CardsBlock/>
+                    <Footer/>
+                </div>  
             </BrowserRouter>
         );
     }
