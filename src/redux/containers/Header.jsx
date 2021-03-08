@@ -9,8 +9,7 @@ class Header extends Component{
         this.state = {
             menu: [{caption: "home", to: "home"},
                 {caption: "about", to: "about"},
-                {caption: "contact", to: "contact"},
-                {caption: "services", to: "services"}],
+                {caption: "contact", to: "contact"}],
             isOpen: false
         }
         this.toggleNav = this.toggleNav.bind(this);
@@ -22,7 +21,7 @@ class Header extends Component{
 
     render(){
         return(
-            <headder>
+            <header className="nav-wrapper">
                 <nav className="nav">
                     <label className="logo">Pokedex App</label>
                     <div className="menu-icon" onClick={this.toggleNav}>
@@ -36,7 +35,7 @@ class Header extends Component{
                         ))}
                     </ul>
                 </nav>
-            </headder>
+            </header>
         )
     }
 }

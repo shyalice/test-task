@@ -16,14 +16,11 @@ class CardsBlock extends Component{
 
     render(){
         return(
-            <div className="container">
-                <div className="cards-block">
-                    {this.props.pokemons.map((pokemon, index) => (
-                        <PokemonCard key={index} name={pokemon.name} img={pokemon.sprites.front_default} id={pokemon.id.toString().padStart(3,0)}/>
-                    ))}
-                </div>
+            <div className="cards-block">
+                {this.props.pokemons.map((pokemon, index) => (
+                    <PokemonCard key={index} name={pokemon.name} img={pokemon.sprites.front_default} id={pokemon.id.toString().padStart(3,0)}/>
+                ))}
             </div>
-            
         );
     }
 }
