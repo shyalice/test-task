@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import {fetchPokemons, getPokemon} from "../actions/pokemonActions";
+import {fetchPokemons} from "../actions/pokemonActions";
 import PokemonCard from '../../components/PokemonCard';
 
 class CardsBlock extends Component{
@@ -14,11 +14,18 @@ class CardsBlock extends Component{
         this.props.fetchPokemons();
     }
 
+    getPokemonId(url){
+        return url.split("/")[url.split("/").length-2]
+    }
+
     render(){
         return(
             <div className="cards-block">
-                {this.props.pokemons.map((pokemon, index) => (
-                    <PokemonCard key={index} name={pokemon.name} img={pokemon.sprites.front_default} id={pokemon.id.toString().padStart(3,0)}/>
+                {this.props.pokemons.map(pokemon => (
+                    <PokemonCard 
+                        key={pokemon.name} name={pokemon.name}
+                        img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.getPokemonId(pokemon.url)}.png`}
+                        id={this.getPokemonId(pokemon.url).toString().padStart(3,0)}/>
                 ))}
             </div>
         );
@@ -27,12 +34,12 @@ class CardsBlock extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        pokemons: state.pokemon.pokemons.sort((a, b) => parseFloat(a.id) - parseFloat(b.id))
+        pokemons: state.pokemon.pokemons
     };
 };
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators({fetchPokemons, getPokemon}, dispatch);
+    return bindActionCreators({fetchPokemons}, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardsBlock); 
