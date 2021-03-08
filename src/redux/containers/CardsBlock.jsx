@@ -20,13 +20,15 @@ class CardsBlock extends Component{
 
     render(){
         return(
-            <div className="cards-block">
-                {this.props.pokemons.map(pokemon => (
-                    <PokemonCard 
-                        key={pokemon.name} name={pokemon.name}
-                        img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.getPokemonId(pokemon.url)}.png`}
-                        id={this.getPokemonId(pokemon.url).toString().padStart(3,0)}/>
-                ))}
+            <div>
+                <div className="cards-block">
+                    {this.props.pokemons.map(pokemon => (
+                        <PokemonCard 
+                            key={pokemon.name} name={pokemon.name}
+                            img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.getPokemonId(pokemon.url)}.png`}
+                            id={this.getPokemonId(pokemon.url).toString().padStart(3,0)}/>
+                    ))}
+                </div>
             </div>
         );
     }
@@ -34,7 +36,10 @@ class CardsBlock extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        pokemons: state.pokemon.pokemons
+        pokemons: state.pokemon.pokemons,
+        prevPage: state.pokemon.prevPage,
+        nextPage: state.pokemon.nextPage,
+        pagesTotal: Math.ceil(state.pokemon.count/20) 
     };
 };
 

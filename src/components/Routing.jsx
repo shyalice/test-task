@@ -9,6 +9,7 @@ const Routing = () => (
         <Route path="/home" component={CardsBlock}/>
         <Route path="/about" exact component={About}/>
         <Route path="/contact" exact component={Contact}/>
+        <Redirect exact from="/" to="/home"/>
     </Switch>
 );
 

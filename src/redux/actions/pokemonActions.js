@@ -1,12 +1,12 @@
 import axios from 'axios';
 import * as actions from '../constants/actionTypes';
 
-export function fetchPokemons() {
+export function fetchPokemons(url = "https://pokeapi.co/api/v2/pokemon") {
     return dispatch => {
         dispatch(fetchPokemonsRequest());
-        return axios.get("https://pokeapi.co/api/v2/pokemon")
+        return axios.get(url)
             .then(response => {
-                dispatch(fetchPokemonsSuccess(response.data.results));
+                dispatch(fetchPokemonsSuccess(response.data.results, response.data.count, response.data.previous, response.data.next));
             })
             .catch(error => {
                 dispatch(fetchPokemonsFailure());
@@ -18,10 +18,13 @@ function fetchPokemonsRequest() {
         type: actions.FETCH_POKEMONS_REQUEST,
     }
 }
-export function fetchPokemonsSuccess(pokemons) {
+export function fetchPokemonsSuccess(pokemons, count, previous, next) {
     return {
         type: actions.FETCH_POKEMONS_SUCCESS,
-        pokemons
+        pokemons,
+        count,
+        previous,
+        next
     }
 }
 function fetchPokemonsFailure(error) {

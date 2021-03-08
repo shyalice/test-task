@@ -3,7 +3,6 @@ import {BrowserRouter} from "react-router-dom"
 import {bindActionCreators} from "redux";
 import {connect} from 'react-redux';
 import Routing from "./components/Routing";
-import CardsBlock from "./redux/containers/CardsBlock";
 import Header from "./redux/containers/Header";
 import Footer from "./components/Footer";
 import "./assets/index.scss";
