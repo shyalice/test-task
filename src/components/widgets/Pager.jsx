@@ -7,18 +7,14 @@ const Pager = ({
                }) => (
     <nav>
         {1 < pagesTotal && (
-            <ul className="pager">
-                {1 !== page && (
-                    <li className="previous">
-                        <span className="cursor-pointer" onClick={() => 1 !== page && loadPage(page - 1)}>previous</span>
-                    </li>
-                )}
-                {page !== pagesTotal && (
-                    <li className="next">
-                        <span className="cursor-pointer" onClick={() => page !== pagesTotal && loadPage(page + 1)}>Next</span>
-                    </li>
-                )}
-            </ul>
+            <div className="pager">
+                <button className="previous" disabled={1 === page} onClick={() => 1 !== page && loadPage(page - 1)}>
+                    <span >Previous</span>
+                </button>
+                <button className="next" disabled={page === pagesTotal} onClick={() => page !== pagesTotal && loadPage(page + 1)}>
+                    <span >Next</span>
+                </button>
+            </div>
         )}
     </nav>
 );

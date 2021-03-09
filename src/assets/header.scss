@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     width:100%;
-    background: $nav-bg;
+    background: $bg-dark;
     height: 100px;
     display: flex;
     justify-content: space-between;
@@ -34,8 +34,8 @@
             height: 100%;
             border-radius: 5px;
             transition: $transition;
-            &.active{background: $nav-caption-bg;}
-            &:hover{background: $nav-caption-bg-hover;}
+            &.active{background: $bg-normal;}
+            &:hover{background: $bg-light;}
         }
     }
 }
@@ -60,8 +60,9 @@
         left: -100px;
         width: 0;
         height: 250px;
-        background: $nav-menu-mobile;
+        background: $bg-darkest;
         transition: $transition;
+        z-index: 100;
         li{
             margin: 0;
             a{min-width: 200px;}

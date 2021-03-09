@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faSpinner} from '@fortawesome/free-solid-svg-icons';
 
 class Sprite extends Component{
     constructor(props){
@@ -18,7 +20,9 @@ class Sprite extends Component{
             <div className="img">
                 <img src={this.props.src} alt={this.props.alt} onLoad={this.onImgLoaded}/>
                 {!this.state.loaded && (
-                    <div>loading</div>
+                    <div className="loading">
+                        <FontAwesomeIcon icon={faSpinner} size="lg" fixedWidth spin />
+                    </div>
                 )}
             </div>
         )

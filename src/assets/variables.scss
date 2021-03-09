@@ -1,7 +1,10 @@
-$nav-bg: #1e44ae;
-$nav-caption: #fff;
-$nav-caption-bg: #275df0;
-$nav-caption-bg-hover: #5f85ee;
-$nav-menu-mobile: #173791;
+$bg-normal: #275df0;
+$bg-darkest: #173791;
 $bg-light: #5978ce;
+$bg-dark: #1e44ae;
+$bg-lightest: #bec6dd;
+$bg-lightest-gradient: linear-gradient(90deg, rgb(194, 208, 250) 0%, rgb(165, 186, 250) 100%);
+$nav-caption: #fff;
+
 $transition: 0.2s;
+

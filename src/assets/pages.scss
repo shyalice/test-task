@@ -1,0 +1,110 @@
+.cards-block-wrapper{
+    .loading{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 50px;
+        color: $bg-dark;
+    }
+    .cards-block{
+        display: flex;
+        flex-flow: wrap;
+        justify-content: space-between;
+        .pokemon-card{
+            position: relative;
+            min-height: 200px;
+            min-width: 200px;
+            width: 18%;
+            background: $bg-lightest-gradient;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 0 10px 20px 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: $transition;
+            .id{
+                position: absolute;
+                top: 5%;
+                left: 5%;
+                font-size: 20px;
+                color: $bg-darkest;
+                font-weight: 700;
+                font-style: italic;
+            }
+            .name{
+                color: $bg-darkest;
+            }
+            .img{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100px;
+                height: 100px;
+                img{
+                    transition: 0.2s;
+                }
+            }
+            &:hover{
+                transform: scale(1.02);
+                box-shadow: 26px 26px 17px 2px rgba(2, 8, 14, 0.3);
+                img{
+                    transform: scale(1.4);
+                } 
+            }
+        }
+    }
+}
+
+.pager{
+    margin: 30px 0;
+    display: flex;
+    justify-content: space-between;
+    button{
+        cursor: pointer;
+        padding: 10px 30px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        background: $bg-dark;
+        color: $nav-caption;
+        text-transform: uppercase;
+        transition: $transition;
+        &:disabled{
+            cursor: not-allowed;
+            background: $bg-lightest;
+            &:hover{background: $bg-lightest;}
+        }
+        &:hover{background: $bg-darkest;}
+    }
+    .previous{
+        margin-left: 10px;
+    }
+    .next{
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 995px) {
+    .cards-block-wrapper{
+        .cards-block{
+            .pokemon-card{
+                width: 45%;
+            }
+        }
+    } 
+}
+
+@media (max-width: 530px) {
+    .cards-block-wrapper{
+        .cards-block{
+            justify-content: space-around;
+            .pokemon-card{
+                width: 90%;
+            }
+        }
+    } 
+}

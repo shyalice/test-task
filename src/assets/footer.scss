@@ -4,13 +4,13 @@
     left: 0;
     height: 100px;
     width: 100%;
-    background: $nav-bg;
+    background: $bg-dark;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: $nav-caption;
     .copyright{
         margin-left: 30px;
+        color: $bg-light;
     }
     .social{
         margin-right: 30px;

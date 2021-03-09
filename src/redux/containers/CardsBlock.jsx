@@ -4,8 +4,9 @@ import {connect} from "react-redux";
 import {fetchPokemons} from "../actions/pokemonActions";
 import PokemonCard from '../../components/PokemonCard';
 import Pager from "../../components/widgets/Pager";
+import {createLoadingSelector} from "../reducers/loadingReducer";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import {faSpinner} from '@fortawesome/free-solid-svg-icons';
 
 class CardsBlock extends Component{
     constructor(props){
@@ -24,15 +25,25 @@ class CardsBlock extends Component{
     render(){
         return(
             <div className="cards-block-wrapper">
-                <div className="cards-block">
-                    {this.props.pokemons.map(pokemon => (
-                        <PokemonCard 
-                            key={pokemon.name} name={pokemon.name}
-                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.getPokemonId(pokemon.url)}.png`}
-                            id={this.getPokemonId(pokemon.url)}/>
-                    ))}
-                    <Pager page={this.props.page} pagesTotal={this.props.pagesTotal} loadPage={this.props.fetchPokemons}/>
-                </div>
+                {!!this.props.loading ? (
+                    <div className="loading">
+                        <FontAwesomeIcon icon={faSpinner} size="lg" fixedWidth spin />
+                    </div>
+                ) : (
+                    <>
+                        <div className="cards-block">
+                            {this.props.pokemons.map(pokemon => (
+                                <PokemonCard 
+                                    key={pokemon.name} name={pokemon.name}
+                                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.getPokemonId(pokemon.url)}.png`}
+                                    id={this.getPokemonId(pokemon.url)}/>
+                            ))}
+                            
+                        </div>
+                        <Pager page={this.props.page} pagesTotal={this.props.pagesTotal} loadPage={this.props.fetchPokemons}/>
+                    </>
+                )}
+                
             </div>
         );
     }
@@ -40,6 +51,7 @@ class CardsBlock extends Component{
 
 const mapStateToProps = (state) => {
     return {
+        loading: createLoadingSelector(['FETCH_POKEMONS'])(state),
         pokemons: state.pokemon.pokemons,
         page: state.pokemon.page,
         pagesTotal: state.pokemon.pagesTotal
