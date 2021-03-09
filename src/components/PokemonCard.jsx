@@ -1,28 +1,18 @@
 import React, {Component} from "react";
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
-import {getPokemon} from "../redux/actions/pokemonActions"
+import {Link} from "react-router-dom";
 
 class PokemonCard extends Component{
     render(){
         return(
-            <div className="pokemon-card" onClick={() => this.props.getPokemon(this.props.name)}>
-                <div className="pokemon-id">#{this.props.id}</div>
+            <Link to={`/pokemon/${this.props.id}`} className="pokemon-card">
+                <div className="pokemon-id">#{this.props.id.toString().padStart(3,0)}</div>
                 <div className="pokemon-img">
                     <img src={this.props.img} alt={this.props.name}/>
                 </div>
                 <h3 className="pokemon-name">{this.props.name[0].toUpperCase() + this.props.name.slice(1)}</h3>
-            </div>
+            </Link>
         )
     }
 }
 
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = dispatch => {
-    return bindActionCreators({getPokemon}, dispatch);
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PokemonCard); 
+export default PokemonCard

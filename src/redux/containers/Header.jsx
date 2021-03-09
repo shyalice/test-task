@@ -30,7 +30,7 @@ class Header extends Component{
                     <ul className={this.state.isOpen ? "nav-menu active" : "nav-menu"}>
                         {this.state.menu.map((item, index) => (
                             <li key={index}>
-                                <NavLink activeClassName="active" to={item.to}>{item.caption}</NavLink>
+                                <NavLink activeClassName="active" to={`/${item.to}`}>{item.caption}</NavLink>
                             </li>
                         ))}
                     </ul>

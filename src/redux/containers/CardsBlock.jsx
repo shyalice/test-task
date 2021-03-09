@@ -34,7 +34,7 @@ class CardsBlock extends Component{
                         <PokemonCard 
                             key={pokemon.name} name={pokemon.name}
                             img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.getPokemonId(pokemon.url)}.png`}
-                            id={this.getPokemonId(pokemon.url).toString().padStart(3,0)}/>
+                            id={this.getPokemonId(pokemon.url)}/>
                     ))}
                 </div>
                 <div className="pagination-wrapper">
