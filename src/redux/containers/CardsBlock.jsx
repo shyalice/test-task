@@ -3,7 +3,7 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {fetchPokemons} from "../actions/pokemonActions";
 import PokemonCard from '../../components/PokemonCard';
-import ReactPaginate from 'react-paginate';
+import Pager from "../../components/widgets/Pager";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
 
@@ -31,6 +31,7 @@ class CardsBlock extends Component{
                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.getPokemonId(pokemon.url)}.png`}
                             id={this.getPokemonId(pokemon.url)}/>
                     ))}
+                    <Pager page={this.props.page} pagesTotal={this.props.pagesTotal} loadPage={this.props.fetchPokemons}/>
                 </div>
             </div>
         );

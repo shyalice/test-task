@@ -13,6 +13,22 @@ class Header extends Component{
             isOpen: false
         }
         this.toggleNav = this.toggleNav.bind(this);
+        this.wrapperRef = React.createRef();
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+    }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleClickOutside);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClickOutside);
+    }
+
+    handleClickOutside(event) {
+        if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+            this.setState({isOpen: false});
+        }
     }
 
     toggleNav(){
@@ -21,23 +37,21 @@ class Header extends Component{
 
     render(){
         return(
-            <header className="nav-wrapper">
-                <nav className="nav">
-                    <div className="logo">
-                        <Link to="home">Pokedex App</Link>
-                    </div>
-                    <div className="menu-icon" onClick={this.toggleNav}>
-                        <i><FontAwesomeIcon icon={this.state.isOpen ? faTimes : faBars} size="lg" color="#fff" fixedWidth /></i>
-                    </div>
-                    <ul className={this.state.isOpen ? "nav-menu active" : "nav-menu"}>
-                        {this.state.menu.map((item, index) => (
-                            <li key={index}>
-                                <NavLink activeClassName="active" to={`/${item.to}`}>{item.caption}</NavLink>
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
-            </header>
+            <nav className="nav" ref={this.wrapperRef}>
+                <div className="logo">
+                    <Link to="/home">Pokedex</Link>
+                </div>
+                <div className="menu-icon" onClick={this.toggleNav}>
+                    <i><FontAwesomeIcon icon={this.state.isOpen ? faTimes : faBars} size="lg" color="#fff" fixedWidth /></i>
+                </div>
+                <ul className={this.state.isOpen ? "nav-menu active" : "nav-menu"}>
+                    {this.state.menu.map((item, index) => (
+                        <li key={index}>
+                            <NavLink activeClassName="active" to={`/${item.to}`} onClick={this.toggleNav}>{item.caption}</NavLink>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
         )
     }
 }
