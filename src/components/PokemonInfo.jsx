@@ -3,6 +3,7 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {createLoadingSelector} from "../redux/reducers/loadingReducer";
 import {getPokemon} from "../redux/actions/pokemonActions";
+import Sprite from "../components/widgets/Sprite";
 
 class PokemonInfo extends Component{
     constructor(props){
@@ -22,9 +23,9 @@ class PokemonInfo extends Component{
                     <p className="text-block">Somethig goes wrong</p>
                 ) : (
                     <div className="pokemon-info-block">
-                        <div className="pokemon-img">
-                            <img src={this.props.pokemon.sprites.front_default} alt={this.props.name}/>
-                            <img src={this.props.pokemon.sprites.back_default} alt={this.props.name}/>
+                        <div>
+                            <Sprite src={this.props.pokemon.sprites.front_default} alt={`${this.props.name}_front`} />
+                            <Sprite src={this.props.pokemon.sprites.back_default} alt={`${this.props.name}_back`} />
                         </div>
                         <div className="pokemon-info">
                             <h2 className="pokemon-name">#{this.props.match.params.id.toString().padStart(3,0)} {this.props.pokemon.name[0].toUpperCase() + this.props.pokemon.name.slice(1)}</h2>

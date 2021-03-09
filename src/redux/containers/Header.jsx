@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink, Link} from "react-router-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faTimes} from '@fortawesome/free-solid-svg-icons'
 
@@ -23,7 +23,9 @@ class Header extends Component{
         return(
             <header className="nav-wrapper">
                 <nav className="nav">
-                    <label className="logo">Pokedex App</label>
+                    <div className="logo">
+                        <Link to="home">Pokedex App</Link>
+                    </div>
                     <div className="menu-icon" onClick={this.toggleNav}>
                         <i><FontAwesomeIcon icon={this.state.isOpen ? faTimes : faBars} size="lg" color="#fff" fixedWidth /></i>
                     </div>

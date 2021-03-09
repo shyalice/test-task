@@ -1,18 +1,17 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
+import Sprite from "../components/widgets/Sprite";
 
-class PokemonCard extends Component{
-    render(){
-        return(
-            <Link to={`/pokemon/${this.props.id}`} className="pokemon-card">
-                <div className="pokemon-id">#{this.props.id.toString().padStart(3,0)}</div>
-                <div className="pokemon-img">
-                    <img src={this.props.img} alt={this.props.name}/>
-                </div>
-                <h3 className="pokemon-name">{this.props.name[0].toUpperCase() + this.props.name.slice(1)}</h3>
-            </Link>
-        )
-    }
-}
+const PokemonCard = ({
+                        src,
+                        name,
+                        id
+                    }) => (
+    <Link to={`/pokemon/${id}`} className="pokemon-card">
+        <div className="pokemon-id">#{id.toString().padStart(3,0)}</div>
+        <Sprite src={src} alt={name} />
+        <h3 className="pokemon-name">{name[0].toUpperCase() + name.slice(1)}</h3>
+    </Link>
+);
 
 export default PokemonCard

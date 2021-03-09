@@ -20,11 +20,6 @@ class CardsBlock extends Component{
     getPokemonId(url){
         return url.split("/")[url.split("/").length-2]
     }
-
-    setPage = (data) => {
-        let page = data.selected+1;
-        this.props.fetchPokemons(page);
-    };
     
     render(){
         return(
@@ -33,23 +28,9 @@ class CardsBlock extends Component{
                     {this.props.pokemons.map(pokemon => (
                         <PokemonCard 
                             key={pokemon.name} name={pokemon.name}
-                            img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.getPokemonId(pokemon.url)}.png`}
+                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.getPokemonId(pokemon.url)}.png`}
                             id={this.getPokemonId(pokemon.url)}/>
                     ))}
-                </div>
-                <div className="pagination-wrapper">
-                    <ReactPaginate
-                        previousLabel={<FontAwesomeIcon icon={faChevronLeft} size="lg"/>}
-                        nextLabel={<FontAwesomeIcon icon={faChevronRight} size="lg"/>}
-                        breakLabel={'...'}
-                        breakClassName={'break-me'}
-                        pageCount={this.props.pagesTotal}
-                        marginPagesDisplayed={1}
-                        pageRangeDisplayed={2}
-                        onPageChange={this.setPage}
-                        containerClassName={'pagination'}
-                        subContainerClassName={'pages pagination'}
-                        activeClassName={'active'}/>
                 </div>
             </div>
         );
