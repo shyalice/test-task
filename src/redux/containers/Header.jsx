@@ -38,7 +38,7 @@ class Header extends Component{
     render(){
         return(
             <nav className="nav" ref={this.wrapperRef}>
-                <div className="logo">
+                <div className="logo" onClick={() => this.setState({isOpen: false})}>
                     <Link to="/home">Pokedex</Link>
                 </div>
                 <div className="menu-icon" onClick={this.toggleNav}>

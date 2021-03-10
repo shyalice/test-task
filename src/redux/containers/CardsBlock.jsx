@@ -4,9 +4,8 @@ import {connect} from "react-redux";
 import {fetchPokemons} from "../actions/pokemonActions";
 import PokemonCard from '../../components/PokemonCard';
 import Pager from "../../components/widgets/Pager";
+import Loading from "../../components/widgets/Loading";
 import {createLoadingSelector} from "../reducers/loadingReducer";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSpinner} from '@fortawesome/free-solid-svg-icons';
 
 class CardsBlock extends Component{
     constructor(props){
@@ -26,9 +25,7 @@ class CardsBlock extends Component{
         return(
             <div className="cards-block-wrapper">
                 {!!this.props.loading ? (
-                    <div className="loading">
-                        <FontAwesomeIcon icon={faSpinner} size="lg" fixedWidth spin />
-                    </div>
+                    <Loading/>
                 ) : (
                     <>
                         <div className="cards-block">
