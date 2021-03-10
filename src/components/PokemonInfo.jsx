@@ -20,7 +20,7 @@ class PokemonInfo extends Component{
                 {!!this.props.loading ? (
                     <div>loading</div>
                 ) : !this.props.pokemon ? (
-                    <p className="text-block">Somethig goes wrong</p>
+                    <p className="text-block">Somethig goes wrong...</p>
                 ) : (
                     <div className="pokemon-info-block">
                         <div>

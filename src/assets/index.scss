@@ -37,6 +37,13 @@ body{
     margin: 0;
 }
 
+h1{
+    margin-bottom: 30px;
+    color: $nav-caption;
+}
+
+p{color: $text;}
+
 .wrapper{
     position: relative;
     min-height: 100vh;
@@ -50,4 +57,8 @@ body{
     height: 100%;
     width: 90%;
     margin: 0 auto;
+}
+
+.text-block{
+    line-height: 1.4;
 }

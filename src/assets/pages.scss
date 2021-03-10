@@ -88,6 +88,24 @@
     }
 }
 
+.contact{
+    .text-block{
+        display: flex;
+        flex-direction: column;
+        .social{
+            margin-top: 50px;
+            align-self: center;
+            a{
+                color: $bg-dark;
+                transition: $transition;
+                &:hover{color: $text;}
+            }
+        }
+    }
+}
+
+
+
 @media (max-width: 995px) {
     .cards-block-wrapper{
         .cards-block{
