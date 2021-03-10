@@ -10,7 +10,7 @@ const Routing = () => (
         <Route path="/home" component={CardsBlock}/>
         <Route path="/about" exact component={About}/>
         <Route path="/contact" exact component={Contact}/>
-        <Route path={`/pokemon/:id`} exact component={PokemonInfo}/>
+        <Route path={`/pokemons/:count/:id`} exact component={PokemonInfo}/>
         <Redirect exact from="/" to="/home"/>
     </Switch>
 );

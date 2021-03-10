@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import {fetchPokemons} from "../actions/pokemonActions";
+import {fetchPokemons, getPokemon} from "../actions/pokemonActions";
 import PokemonCard from '../../components/PokemonCard';
+import SearchPokemon from "./SearchPokemon";
 import Pager from "../../components/widgets/Pager";
 import Loading from "../../components/widgets/Loading";
 import {createLoadingSelector} from "../reducers/loadingReducer";
@@ -28,11 +29,13 @@ class CardsBlock extends Component{
                     <Loading/>
                 ) : (
                     <>
+                        <SearchPokemon count={this.props.count}/>
                         <div className="cards-block">
                             {this.props.pokemons.map(pokemon => (
                                 <PokemonCard 
                                     key={pokemon.name} name={pokemon.name}
                                     src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.getPokemonId(pokemon.url)}.png`}
+                                    count={this.props.count}
                                     id={this.getPokemonId(pokemon.url)}/>
                             ))}
                             
@@ -51,12 +54,13 @@ const mapStateToProps = (state) => {
         loading: createLoadingSelector(['FETCH_POKEMONS'])(state),
         pokemons: state.pokemon.pokemons,
         page: state.pokemon.page,
-        pagesTotal: state.pokemon.pagesTotal
+        pagesTotal: state.pokemon.pagesTotal,
+        count: state.pokemon.count
     };
 };
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators({fetchPokemons}, dispatch);
+    return bindActionCreators({fetchPokemons, getPokemon}, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardsBlock); 

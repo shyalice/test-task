@@ -5,6 +5,7 @@ export const initialState = {
     page: 1,
     pagesTotal: null,
     chosenPokemon: null,
+    count: null
 };
 
 const pokemonReducer = (state = initialState, action) => {
@@ -13,9 +14,9 @@ const pokemonReducer = (state = initialState, action) => {
             return {
                 ...state,
                 pokemons: action.pokemons,
-                count: action.count,
                 pagesTotal: action.pagesTotal,
-                page: action.page
+                page: action.page,
+                count: action.count
             };
         case actions.GET_POKEMON_SUCCESS:
             return {

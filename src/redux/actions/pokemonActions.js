@@ -23,7 +23,8 @@ export function fetchPokemonsSuccess(pokemons, count, page) {
         type: actions.FETCH_POKEMONS_SUCCESS,
         pokemons,
         pagesTotal: Math.ceil(count/20),
-        page
+        page,
+        count
     }
 }
 function fetchPokemonsFailure(error) {

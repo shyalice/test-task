@@ -59,35 +59,6 @@
     }
 }
 
-.pager{
-    margin: 30px 0;
-    display: flex;
-    justify-content: space-between;
-    button{
-        cursor: pointer;
-        padding: 10px 30px;
-        border: none;
-        outline: none;
-        border-radius: 5px;
-        background: $bg-dark;
-        color: $nav-caption;
-        text-transform: uppercase;
-        transition: $transition;
-        &:disabled{
-            cursor: not-allowed;
-            background: $bg-lightest;
-            &:hover{background: $bg-lightest;}
-        }
-        &:hover{background: $bg-darkest;}
-    }
-    .previous{
-        margin-left: 10px;
-    }
-    .next{
-        margin-right: 10px;
-    }
-}
-
 .contact{
     .text-block{
         display: flex;

@@ -3,6 +3,7 @@
 @import "./header.scss";
 @import "./footer.scss";
 @import "./pages.scss";
+@import "./widgets.scss";
 
 .poison{background: #b83cbd;}
 .normal{background: #afb392;}
@@ -62,4 +63,14 @@ p{color: $text;}
 
 .text-block{
     line-height: 1.4;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
 }
