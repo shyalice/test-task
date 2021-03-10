@@ -172,6 +172,15 @@
     }
 }
 
+.not-found{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    color: $text;
+}
+
 @media (max-width: 685px) {
     .pokemon-info-block{
         font-size: 0.95rem;

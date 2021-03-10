@@ -22,7 +22,10 @@ class PokemonInfo extends Component{
                 {!!this.props.loadingInfo ? (
                     <Loading/>
                 ) : !this.props.pokemon ? (
-                    <p className="text-block">Somethig goes wrong...</p>
+                    <>
+                        <p className="text-block">Pokemon not found...</p>
+                        <Link className="btn back" to="/home">Back</Link>
+                    </>
                 ) : (
                     <>
                         <h2 className="name">#{this.props.pokemon.id.toString().padStart(3,0)} {this.props.pokemon.name[0].toUpperCase() + this.props.pokemon.name.slice(1)}</h2>
